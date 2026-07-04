@@ -8,12 +8,14 @@
     height: 100%;
     width: 100%;
     background-color: #EDE9E1;
-    @apply antialiased font-sans;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* All headings use Playfair Display */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif text-textMain;
+    font-family: 'Playfair Display', serif;
+    color: #3D3929;
   }
 
   /* Phone-frame wrapper */
@@ -46,13 +48,10 @@
       border-radius: 0;
       box-shadow: none;
       position: relative;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       transform: none;
     }
-    html, body, #root {
-      background-color: #FAFAF8;
-    }
+    html, body, #root { background-color: #FAFAF8; }
   }
 
   /* Inner content area fills the phone */
@@ -64,4 +63,89 @@
     height: 100%;
     width: 100%;
   }
+}
+
+/* ── Hardcoded design tokens — these ALWAYS win ── */
+@layer components {
+
+  /* ─ Buttons ─ */
+  .btn-primary {
+    display: block;
+    width: 100%;
+    background-color: #C96442;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    border: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-primary:hover { background-color: #A8512F; }
+
+  .btn-ghost {
+    display: block;
+    width: 100%;
+    background-color: #ffffff;
+    color: #3D3929;
+    text-align: center;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    border: 1px solid #E8E4DC;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-ghost:hover { background-color: #F5F3EF; }
+
+  /* ─ Inputs ─ */
+  .input-field {
+    display: block;
+    width: 100%;
+    background-color: #F5F3EF;
+    color: #3D3929;
+    border: 1px solid #E8E4DC;
+    border-radius: 0.75rem;
+    padding: 0.875rem 1rem;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+    font-family: 'Inter', sans-serif;
+  }
+  .input-field:focus { border-color: #C96442; }
+  .input-field::placeholder { color: rgba(140,138,125,0.6); }
+
+  /* ─ Card / Panel ─ */
+  .card {
+    background-color: #ffffff;
+    border: 1px solid #E8E4DC;
+    border-radius: 1.25rem;
+  }
+
+  /* ─ Section label ─ */
+  .label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8C8A7D;
+    margin-bottom: 0.4rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ─ Brand text ─ */
+  .brand-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: #3D3929;
+    font-size: 1.75rem;
+  }
+  .brand-logo span { color: #C96442; }
 }
