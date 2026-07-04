@@ -1,0 +1,25 @@
+# Render Blueprint for the Smart-Ride backend (Express + Socket.IO)
+# Docs: https://render.com/docs/blueprint-spec
+#
+# Deploy: push this file, then in Render → "New +" → "Blueprint" and pick this repo.
+# Render injects PORT automatically; the server reads process.env.PORT.
+services:
+  - type: web
+    name: smart-ride-backend
+    runtime: node
+    plan: free
+    rootDir: Backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Secrets — set these in the Render dashboard (sync:false = not stored in git)
+      - key: DB_CONNECT
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: GOOGLE_MAPS_API
+        sync: false
