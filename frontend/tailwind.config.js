@@ -7,14 +7,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0f172a', // Deep slate
-        surface: '#1e293b', 
-        primary: '#3b82f6', // Neon Blue
-        primaryHover: '#2563eb',
-        accent: '#8b5cf6', // Neon Purple
-        textMain: '#f8fafc',
-        textMuted: '#94a3b8',
-        inputBg: '#334155'
+        background: '#FAF9F6', // Alabaster cream
+        surface: '#FFFFFF', // Crisp white cards
+        primary: '#2D2B2A', // Charcoal for major buttons
+        primaryHover: '#1A1818',
+        accent: '#D38D7A', // Muted terracotta
+        textMain: '#2D2B2A', 
+        textMuted: '#787673',
+        inputBg: '#F2EFEC',
+        borderColor: '#E6E4DE'
+      },
+      fontFamily: {
+        serif: ['"Playfair Display"', 'serif'],
+        sans: ['"Inter"', 'sans-serif'],
       }
     },
   },

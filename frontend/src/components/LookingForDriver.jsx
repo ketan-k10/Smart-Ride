@@ -1,38 +1,41 @@
 import React from 'react'
 
+const RideInfoRow = ({ icon, label, value, border = true }) => (
+    <div className={`flex items-center gap-4 p-4 ${border ? 'border-b border-borderColor' : ''}`}>
+        <div className='h-9 w-9 rounded-full bg-inputBg border border-borderColor flex items-center justify-center flex-shrink-0'>
+            <i className={`${icon} text-textMuted`}></i>
+        </div>
+        <div>
+            <p className='text-xs text-textMuted uppercase tracking-widest mb-0.5'>{label}</p>
+            <h3 className='text-sm font-medium text-textMain leading-snug'>{value}</h3>
+        </div>
+    </div>
+)
+
 const LookingForDriver = (props) => {
     return (
         <div>
-            <h5 className='p-1 text-center w-[93%] absolute top-0' onClick={() => {
-                props.setVehicleFound(false)
-            }}><i className="text-3xl text-gray-200 ri-arrow-down-wide-line"></i></h5>
-            <h3 className='text-2xl font-semibold mb-5'>Looking for a Driver</h3>
+            <button
+                className='absolute top-3 left-1/2 -translate-x-1/2 w-10 h-1 bg-borderColor rounded-full hover:bg-textMuted transition'
+                onClick={() => props.setVehicleFound(false)}
+            ></button>
 
-            <div className='flex gap-2 justify-between flex-col items-center'>
-                <img className='h-20' src="https://swyft.pl/wp-content/uploads/2023/05/how-many-people-can-a-uberx-take.jpg" alt="" />
-                <div className='w-full mt-5'>
-                    <div className='flex items-center gap-5 p-3 border-b-2'>
-                        <i className="ri-map-pin-user-fill"></i>
-                        <div>
-                            <h3 className='text-lg font-medium'>562/11-A</h3>
-                            <p className='text-sm -mt-1 text-gray-600'>{props.pickup}</p>
-                        </div>
-                    </div>
-                    <div className='flex items-center gap-5 p-3 border-b-2'>
-                        <i className="text-lg ri-map-pin-2-fill"></i>
-                        <div>
-                            <h3 className='text-lg font-medium'>562/11-A</h3>
-                            <p className='text-sm -mt-1 text-gray-600'>{props.destination}</p>
-                        </div>
-                    </div>
-                    <div className='flex items-center gap-5 p-3'>
-                        <i className="ri-currency-line"></i>
-                        <div>
-                            <h3 className='text-lg font-medium'>₹{props.fare[ props.vehicleType ]} </h3>
-                            <p className='text-sm -mt-1 text-gray-600'>Cash Cash</p>
-                        </div>
+            <h3 className='text-2xl font-serif font-semibold text-textMain mb-2'>Finding your driver</h3>
+            <p className='text-textMuted text-sm mb-6'>Sit tight, we're looking for a nearby captain…</p>
+
+            <div className='flex justify-center mb-6'>
+                <div className='relative'>
+                    <div className='h-16 w-16 rounded-full border-4 border-borderColor border-t-accent animate-spin'></div>
+                    <div className='absolute inset-0 flex items-center justify-center'>
+                        <i className="ri-car-line text-2xl text-textMuted"></i>
                     </div>
                 </div>
+            </div>
+
+            <div className='bg-inputBg rounded-xl border border-borderColor overflow-hidden mb-4'>
+                <RideInfoRow icon="ri-map-pin-user-fill" label="Pickup" value={props.pickup} />
+                <RideInfoRow icon="ri-map-pin-2-fill" label="Destination" value={props.destination} />
+                <RideInfoRow icon="ri-currency-line" label="Fare" value={`₹${props.fare[props.vehicleType]} · Cash`} border={false} />
             </div>
         </div>
     )

@@ -20,34 +20,34 @@ const Riding = () => {
             
             <div className='flex flex-col h-screen absolute md:relative top-0 w-full md:w-[450px] z-20 pointer-events-none md:pointer-events-auto'>
                 
-                <Link to='/home' className='fixed md:absolute right-4 md:right-auto md:left-4 top-4 h-11 w-11 bg-surface border border-slate-700 flex items-center justify-center rounded-full z-30 shadow-lg hover:bg-slate-700 transition pointer-events-auto'>
-                    <i className="text-xl font-medium ri-home-5-line text-white"></i>
+                <Link to='/home' className='fixed md:absolute right-6 md:right-auto md:left-8 top-6 h-11 w-11 bg-surface border border-borderColor flex items-center justify-center rounded-full z-30 shadow-sm hover:bg-inputBg transition pointer-events-auto'>
+                    <i className="text-xl ri-home-5-line text-textMain"></i>
                 </Link>
 
-                <div className='h-1/2 md:h-full w-full bg-surface shadow-[0_-5px_20px_rgba(0,0,0,0.5)] md:shadow-2xl relative pointer-events-auto md:border-r border-slate-700 mt-auto md:pt-24 p-6 flex flex-col justify-between'>
+                <div className='h-[45%] md:h-full w-full bg-surface shadow-[0_-5px_20px_rgba(0,0,0,0.05)] md:shadow-2xl relative pointer-events-auto md:border-r border-borderColor mt-auto md:pt-28 p-8 flex flex-col justify-between rounded-t-3xl md:rounded-none'>
                     <div>
-                        <div className='flex items-center justify-between mb-6'>
-                            <img className='h-12 drop-shadow-md' src="https://swyft.pl/wp-content/uploads/2023/05/how-many-people-can-a-uberx-take.jpg" alt="Car" />
+                        <div className='flex items-center justify-between mb-8'>
+                            <img className='h-12' src="https://swyft.pl/wp-content/uploads/2023/05/how-many-people-can-a-uberx-take.jpg" alt="Car" />
                             <div className='text-right'>
                                 <h2 className='text-lg font-medium capitalize text-textMain'>{ride?.captain.fullname.firstname}</h2>
-                                <h4 className='text-xl font-semibold text-white -mt-1 -mb-1'>{ride?.captain.vehicle.plate}</h4>
+                                <h4 className='text-xl font-semibold text-textMain -mt-1 -mb-1'>{ride?.captain.vehicle.plate}</h4>
                                 <p className='text-sm text-textMuted'>Maruti Suzuki Alto</p>
                             </div>
                         </div>
 
-                        <div className='flex gap-2 justify-between flex-col items-center bg-inputBg rounded-xl p-2'>
+                        <div className='flex gap-2 justify-between flex-col items-center bg-inputBg rounded-2xl p-2 border border-borderColor/50'>
                             <div className='w-full'>
-                                <div className='flex items-center gap-5 p-3 border-b border-slate-700'>
-                                    <i className="text-lg ri-map-pin-2-fill text-primary"></i>
+                                <div className='flex items-center gap-5 p-4 border-b border-borderColor'>
+                                    <i className="text-xl ri-map-pin-2-fill text-accent"></i>
                                     <div>
-                                        <h3 className='text-lg font-medium text-textMain'>Destination</h3>
+                                        <h3 className='text-base font-semibold text-textMain mb-0.5'>Destination</h3>
                                         <p className='text-sm text-textMuted'>{ride?.destination}</p>
                                     </div>
                                 </div>
-                                <div className='flex items-center gap-5 p-3'>
-                                    <i className="ri-currency-line text-green-500"></i>
+                                <div className='flex items-center gap-5 p-4'>
+                                    <i className="text-xl ri-currency-line text-textMain"></i>
                                     <div>
-                                        <h3 className='text-lg font-medium text-textMain'>₹{ride?.fare} </h3>
+                                        <h3 className='text-base font-semibold text-textMain mb-0.5'>₹{ride?.fare}</h3>
                                         <p className='text-sm text-textMuted'>Cash</p>
                                     </div>
                                 </div>
@@ -55,13 +55,13 @@ const Riding = () => {
                         </div>
                     </div>
                     
-                    <button className='w-full mt-5 bg-primary hover:bg-primaryHover text-white font-semibold p-3 rounded-xl transition text-lg shadow-lg shadow-primary/20'>
+                    <button className='w-full mt-6 bg-primary hover:bg-primaryHover text-white font-medium p-4 rounded-xl transition text-base shadow-sm'>
                         Make a Payment
                     </button>
                 </div>
             </div>
 
-            <div className='h-1/2 md:h-full w-full md:flex-1 absolute md:relative z-10 top-0 left-0 bg-background'>
+            <div className='h-full w-full md:flex-1 absolute md:relative z-10 top-0 left-0 bg-background'>
                 <LiveTracking />
             </div>
             

@@ -8,7 +8,7 @@ import ConfirmRidePopUp from '../components/ConfirmRidePopUp'
 import { SocketContext } from '../context/SocketContext'
 import { CaptainDataContext } from '../context/CapatainContext'
 import axios from 'axios'
-import LiveTracking from '../components/LiveTracking' // We can just use LiveTracking instead of gif, or keep gif if they prefer, but let's use a nice map placeholder
+import LiveTracking from '../components/LiveTracking'
 
 const CaptainHome = () => {
     const [ ridePopupPanel, setRidePopupPanel ] = useState(false)
@@ -42,7 +42,7 @@ const CaptainHome = () => {
     })
 
     async function confirmRide() {
-        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/confirm`, {
+        await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/confirm`, {
             rideId: ride._id,
             captainId: captain._id,
         }, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
@@ -64,32 +64,29 @@ const CaptainHome = () => {
     return (
         <div className='h-screen flex flex-col md:flex-row relative overflow-hidden bg-background text-textMain'>
             
-            {/* Sidebar equivalent on Desktop */}
-            <div className='flex flex-col h-screen absolute md:relative top-0 w-full md:w-[450px] z-20 pointer-events-none md:pointer-events-auto'>
+            <div className='flex flex-col h-screen absolute md:relative top-0 w-full md:w-[450px] z-20 pointer-events-none md:pointer-events-auto md:border-r border-borderColor shadow-[10px_0_30px_rgba(0,0,0,0.03)]'>
                 
-                {/* Top Nav */}
-                <div className='fixed md:absolute p-6 top-0 flex items-center justify-between w-full md:w-[450px] pointer-events-auto z-30'>
-                    <div className='text-2xl font-extrabold tracking-tight text-white drop-shadow-md bg-surface/80 px-3 py-1 rounded-lg backdrop-blur-md border border-slate-700'>
-                        Smart<span className="text-primary">-Ride</span> <span className='text-xs text-accent font-normal'>Captain</span>
+                <div className='fixed md:absolute p-6 md:p-8 top-0 flex items-center justify-between w-full md:w-[450px] pointer-events-auto z-30'>
+                    <div className='bg-surface/90 px-4 py-2 rounded-xl backdrop-blur-md border border-borderColor shadow-sm'>
+                        <span className='text-2xl font-serif font-semibold tracking-tight text-textMain'>
+                            Smart<span className="text-accent">-Ride</span>
+                        </span>
                     </div>
-                    <Link to='/captain-login' className='h-10 w-10 bg-surface border border-slate-700 flex items-center justify-center rounded-full text-white hover:bg-slate-700 transition'>
-                        <i className="text-lg font-medium ri-logout-box-r-line"></i>
+                    <Link to='/captain-login' className='h-11 w-11 bg-surface border border-borderColor flex items-center justify-center rounded-full text-textMain shadow-sm transition hover:bg-inputBg'>
+                        <i className="text-xl ri-logout-box-r-line"></i>
                     </Link>
                 </div>
 
-                {/* Dashboard Area - On mobile it's pushed to bottom 40%, on desktop it fills sidebar */}
-                <div className='h-2/5 md:h-full w-full bg-surface shadow-[0_-5px_20px_rgba(0,0,0,0.5)] md:shadow-2xl relative pointer-events-auto md:border-r border-slate-700 mt-auto md:mt-24 p-6 flex flex-col'>
+                <div className='h-[45%] md:h-full w-full bg-surface relative pointer-events-auto mt-auto md:mt-24 p-8 flex flex-col rounded-t-3xl md:rounded-none shadow-[0_-15px_30px_rgba(0,0,0,0.05)] md:shadow-none border-t md:border-t-0 border-borderColor'>
                     <CaptainDetails />
                 </div>
             </div>
 
-            {/* Map Area */}
-            <div className='h-3/5 md:h-full w-full md:flex-1 absolute md:relative z-10 top-0 left-0 bg-background'>
+            <div className='h-full w-full md:flex-1 absolute md:relative z-10 top-0 left-0 bg-background'>
                 <img className='h-full w-full object-cover opacity-80' src="https://miro.medium.com/v2/resize:fit:1400/0*gwMx05pqII5hbfmX.gif" alt="Radar Map" />
             </div>
 
-            {/* Sliding Panels */}
-            <div ref={ridePopupPanelRef} className='fixed md:absolute w-full md:w-[450px] md:left-0 z-40 bottom-0 translate-y-full bg-surface border-t border-r border-slate-700 shadow-2xl px-5 py-8 pt-12 md:rounded-tr-2xl text-textMain'>
+            <div ref={ridePopupPanelRef} className='fixed md:absolute w-full md:w-[450px] md:left-0 z-40 bottom-0 translate-y-full bg-surface border-t md:border-r border-borderColor shadow-2xl px-6 py-8 pt-12 md:rounded-tr-2xl text-textMain'>
                 <RidePopUp
                     ride={ride}
                     setRidePopupPanel={setRidePopupPanel}
@@ -98,7 +95,7 @@ const CaptainHome = () => {
                 />
             </div>
             
-            <div ref={confirmRidePopupPanelRef} className='fixed md:absolute w-full md:w-[450px] md:left-0 h-screen md:h-[90vh] z-50 bottom-0 translate-y-full bg-surface border-t border-r border-slate-700 shadow-2xl px-5 py-8 pt-12 md:rounded-tr-2xl text-textMain overflow-y-auto'>
+            <div ref={confirmRidePopupPanelRef} className='fixed md:absolute w-full md:w-[450px] md:left-0 h-screen md:h-[90vh] z-50 bottom-0 translate-y-full bg-surface border-t md:border-r border-borderColor shadow-2xl px-6 py-8 pt-12 md:rounded-tr-2xl text-textMain overflow-y-auto'>
                 <ConfirmRidePopUp
                     ride={ride}
                     setConfirmRidePopupPanel={setConfirmRidePopupPanel} setRidePopupPanel={setRidePopupPanel} />
