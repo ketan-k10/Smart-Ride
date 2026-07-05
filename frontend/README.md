@@ -1,8 +1,35 @@
-# React + Vite
+# Smart-Ride — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The React (Vite) client for [Smart-Ride](../README.md). Mobile-first UI built with Tailwind CSS, talking to the Express/Socket.IO backend.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+cp .env.example .env      # fill in the values
+npm run dev               # http://localhost:5173
+```
+
+## Environment variables
+
+| Variable | Description |
+|----------|-------------|
+| `VITE_BASE_URL` | Backend URL — used for both REST calls and the Socket.IO connection |
+| `VITE_GOOGLE_MAPS_API_KEY` | Google Maps browser key (Maps JavaScript + Places) |
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start the dev server with HMR |
+| `npm run build` | Production build to `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+## Structure
+
+- `src/pages/` — route screens (Home, login/signup, riding, captain views)
+- `src/components/` — UI panels and shared components
+- `src/context/` — User, Captain, and Socket context providers
+
+See the [root README](../README.md) for the full project overview and deployment guide.
