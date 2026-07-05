@@ -29,7 +29,7 @@ A full-stack, real-time ride-hailing application — riders book trips, captains
 
 | Layer | Technologies |
 |-------|--------------|
-| Frontend | React 18, Vite, Tailwind CSS, React Router, Axios, Socket.IO client, Google Maps (`@react-google-maps/api`) |
+| Frontend | React, Vite, Tailwind CSS, React Router, Axios, Socket.IO client, Google Maps (`@react-google-maps/api`) |
 | Backend | Node.js, Express, MongoDB (Mongoose), Socket.IO, JWT, bcryptjs, express-validator |
 | Infra | Netlify (frontend), Render (backend), MongoDB Atlas (database) |
 
